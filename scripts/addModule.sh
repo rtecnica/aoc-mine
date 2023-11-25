@@ -6,7 +6,6 @@ SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 mkdir $1
 cd $1
 $SCRIPT_DIR/addmodule.sh c
-mv $SCRIPT_DIR/.clang-format c/
 stack new h
 mkdir r
 cd r
