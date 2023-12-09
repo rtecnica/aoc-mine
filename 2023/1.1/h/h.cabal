@@ -36,6 +36,7 @@ library
   build-depends:
       base >=4.7 && <5
     , text
+    , text-icu
   default-language: Haskell2010
 
 executable h-exe
@@ -47,6 +48,7 @@ executable h-exe
       base >=4.7 && <5
     , h
     , text
+    , text-icu
   default-language: Haskell2010
 
 test-suite h-test
@@ -59,4 +61,5 @@ test-suite h-test
       base >=4.7 && <5
     , h
     , text
+    , text-icu
   default-language: Haskell2010
