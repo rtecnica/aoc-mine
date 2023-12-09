@@ -21,6 +21,7 @@ description:         Please see the README on GitHub at <https://github.com/gith
 
 dependencies:
 - base >= 4.7 && < 5
+- text
 
 ghc-options:
 - -Wall
@@ -46,7 +47,9 @@ executables:
     - -with-rtsopts=-N
     dependencies:
     - h
-
+    when:        
+    - condition: false        
+      other-modules: Paths_h
 tests:
   h-test:
     main:                Spec.hs
@@ -57,3 +60,7 @@ tests:
     - -with-rtsopts=-N
     dependencies:
     - h
+    when:        
+    - condition: false        
+      other-modules: Paths_h
+
