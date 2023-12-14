@@ -1,0 +1,87 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Iinc",
+      "-std=c11",
+      "-Wall",
+      "-ggdb3",
+      "-O3",
+      "-o",
+      "bin/c",
+      "inc/stm.h"
+    ],
+    "directory": "/home/rtecnica/Projects/aoc-mine/2023/1.2/c",
+    "file": "/home/rtecnica/Projects/aoc-mine/2023/1.2/c/inc/stm.h",
+    "output": "/home/rtecnica/Projects/aoc-mine/2023/1.2/c/bin/c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Iinc",
+      "-std=c11",
+      "-Wall",
+      "-ggdb3",
+      "-O3",
+      "-o",
+      "bin/c",
+      "inc/wordetec.h"
+    ],
+    "directory": "/home/rtecnica/Projects/aoc-mine/2023/1.2/c",
+    "file": "/home/rtecnica/Projects/aoc-mine/2023/1.2/c/inc/wordetec.h",
+    "output": "/home/rtecnica/Projects/aoc-mine/2023/1.2/c/bin/c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Iinc",
+      "-std=c11",
+      "-Wall",
+      "-ggdb3",
+      "-O3",
+      "-o",
+      "bin/c",
+      "c.c"
+    ],
+    "directory": "/home/rtecnica/Projects/aoc-mine/2023/1.2/c",
+    "file": "/home/rtecnica/Projects/aoc-mine/2023/1.2/c/c.c",
+    "output": "/home/rtecnica/Projects/aoc-mine/2023/1.2/c/bin/c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Iinc",
+      "-std=c11",
+      "-Wall",
+      "-ggdb3",
+      "-O3",
+      "-o",
+      "bin/c",
+      "src/stm.c"
+    ],
+    "directory": "/home/rtecnica/Projects/aoc-mine/2023/1.2/c",
+    "file": "/home/rtecnica/Projects/aoc-mine/2023/1.2/c/src/stm.c",
+    "output": "/home/rtecnica/Projects/aoc-mine/2023/1.2/c/bin/c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Iinc",
+      "-std=c11",
+      "-Wall",
+      "-ggdb3",
+      "-O3",
+      "-o",
+      "bin/c",
+      "src/wordetec.c"
+    ],
+    "directory": "/home/rtecnica/Projects/aoc-mine/2023/1.2/c",
+    "file": "/home/rtecnica/Projects/aoc-mine/2023/1.2/c/src/wordetec.c",
+    "output": "/home/rtecnica/Projects/aoc-mine/2023/1.2/c/bin/c"
+  }
+]
