@@ -30,7 +30,6 @@ void sumDigits(void) {
       isNum(globals.digits[SECOND_DIGIT]) ? globals.digits[SECOND_DIGIT] : globals.digits[FIRST_DIGIT];
   uint32_t tens = ((uint32_t)(globals.digits[FIRST_DIGIT] - '0')) * 10;
   uint32_t ones = ((uint32_t)(globals.digits[SECOND_DIGIT] - '0'));
-  printf("%d\n", tens + ones);
   running_sum += (tens + ones);
 }
 

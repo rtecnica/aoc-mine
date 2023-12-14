@@ -17,9 +17,6 @@ void search_and_replace(char* content) {
     for (int i = 0; i < 9; i++) {
       if (strcmp_lax(num_list[i], content + cursor)) {
         *(content + cursor) = (char)(i + 0x31);
-        // for (int j = 1; j < strlen(num_list[i]); j++) {
-        //   *(content + cursor + j) = '-';
-        // }
       }
     }
     cursor++;
