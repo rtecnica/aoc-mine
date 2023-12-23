@@ -1,5 +1,6 @@
 #include "inc/lib.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(void) {
   FILE* input = fopen("../input.txt", "r+");
@@ -17,11 +18,11 @@ int main(void) {
     p = fscanf(input, "%[^\n] ", line);
     if (p < 0)
       break;
-    game_t* game = parseGame(line);
-    if (isGamePosible(&bag, game))
-      sum_games_id += game->id;
-    // // freeGame(game);
+    game_t game = parseGame(line);
+    if (isGamePosible(&bag, &game)) {
+      sum_games_id += game.id;
+    }
   }
-  // printf("%d\n", sum_games_id);
+  printf("%d\n", sum_games_id);
   return 0;
 }

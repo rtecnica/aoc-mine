@@ -6,9 +6,9 @@ INCLUDES = $(wildcard $(INCLUDE_DIR)/*.h)
 LIBS =
 DEPS = $(wildcard $(SRC_DIR)/*.c)
 TARGET = c
-CFLAGS = -std=c11 -Wall -ggdb3 -O3
+CFLAGS = -std=gnu11 -Wall -ggdb3 -O3
 CPPFLAGS = -I$(INCLUDE_DIR) -MMD -MP
-BUILD_FLAGS = -std=c11 -w -ggdb3 
+BUILD_FLAGS = -std=gnu11 -w -ggdb3 
 
 .PHONY: all
 all: makedirs $(BUILD_DIR)/$(TARGET)
