@@ -2,6 +2,7 @@
 
 module Lib
   ( Bag (..),
+    Game (..),
     parseGame,
     isGamePossible,
   )
