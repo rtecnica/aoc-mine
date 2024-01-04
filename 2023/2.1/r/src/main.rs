@@ -10,12 +10,13 @@ fn main() {
         green: 13,
     };
 
-    let mut running_sum: u32 = 0;
-    for line in read_to_string("../input.txt").unwrap().lines() {
-        let curr_game = from_string(line);
-        if is_game_possible(&ref_bag, &curr_game) {
-            running_sum += curr_game.id as u32;
-        }
-    }
+    let running_sum: u32 = read_to_string("../input.txt")
+        .unwrap()
+        .lines()
+        .map(|line| from_string(line))
+        .filter(|curr_game| is_game_possible(&ref_bag, &curr_game))
+        .map(|curr_game: Game| curr_game.id)
+        .fold(0, |acc, item| acc + (item as u32));
+
     println!("{}", running_sum);
 }
