@@ -1,6 +1,6 @@
 // Library for implementing dynamically sized arrays
-#include <stdlib.h>
 #include <inttypes.h>
+#include <stdlib.h>
 
 #undef VECTYPE
 #undef VECNAME
@@ -57,4 +57,3 @@ size_t MAKE_FUNC_NAME(preappend)(MAKE_STRUCT_TYPE_NAME() * vec, VECTYPE item);
 
 VECTYPE MAKE_FUNC_NAME(pop)(MAKE_STRUCT_TYPE_NAME() * vec);
 VECTYPE MAKE_FUNC_NAME(deleete)(MAKE_STRUCT_TYPE_NAME() * vec, size_t index);
-

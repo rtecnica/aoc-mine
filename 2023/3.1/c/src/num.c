@@ -13,18 +13,17 @@ num_vec_t* from_string(char* line, size_t len) {
   //    begin, end > 0 -> returning number
   //    begin < 0, end > 0 -> invalid
   //
-  while(counter <= len) {
-    if(line[counter] <= '9' && line[counter] >= '0')
-    {
+  while (counter <= len) {
+    if (line[counter] <= '9' && line[counter] >= '0') {
       // Is Digit
-      if (begin < 0) 
+      if (begin < 0)
         begin = counter;
       else {
         end = counter;
       }
     } else {
       if (begin > 0) {
-        if(end < 0) {
+        if (end < 0) {
           end = begin;
         }
         int buffer_len = (end - begin + 2);
@@ -34,19 +33,19 @@ num_vec_t* from_string(char* line, size_t len) {
         int value;
         sscanf(buffer, "%d", &value);
         sch_num_t new_num = {
-          .value = value,
-          .begin = begin,
-          .end = end,
+            .value = value,
+            .begin = begin,
+            .end = end,
         };
 
         num_push(new, new_num);
-        
+
         begin = -1;
         end = -1;
       }
-    } 
+    }
 
-    counter ++;
+    counter++;
   }
 
   return new;

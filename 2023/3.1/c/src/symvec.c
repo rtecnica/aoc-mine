@@ -1,12 +1,12 @@
+#include "symvec.h"
 #include <math.h>
 #include <stdio.h>
 #include <string.h>
-#include "symvec.h"
 
 #define VECNAME_DEF_LOWER_MARGIN (1.0f / 4)
 #define VECNAME_DEF_UPPER_MARGIN (3.0f / 4)
 
-MAKE_STRUCT_TYPE_NAME() * MAKE_FUNC_NAME(new_heap) (void) {
+MAKE_STRUCT_TYPE_NAME() * MAKE_FUNC_NAME(new_heap)(void) {
   MAKE_STRUCT_TYPE_NAME()* new = malloc(sizeof(MAKE_STRUCT_TYPE_NAME()));
   new->size = 0;
   new->capacity = 16;
@@ -14,7 +14,7 @@ MAKE_STRUCT_TYPE_NAME() * MAKE_FUNC_NAME(new_heap) (void) {
   return new;
 }
 
-MAKE_STRUCT_TYPE_NAME() MAKE_FUNC_NAME(new_stack) (void) {
+MAKE_STRUCT_TYPE_NAME() MAKE_FUNC_NAME(new_stack)(void) {
   MAKE_STRUCT_TYPE_NAME() new;
   new.size = 0;
   new.capacity = 128;
@@ -71,7 +71,7 @@ VECTYPE MAKE_FUNC_NAME(at)(MAKE_STRUCT_TYPE_NAME() * vec, size_t index) {
     return *(vec->arr + index);
 }
 
-int MAKE_FUNC_NAME(find_with)(MAKE_STRUCT_TYPE_NAME()* vec, VECTYPE item, int (*comp)(VECTYPE, VECTYPE)) {
+int MAKE_FUNC_NAME(find_with)(MAKE_STRUCT_TYPE_NAME() * vec, VECTYPE item, int (*comp)(VECTYPE, VECTYPE)) {
   VECTYPE* cursor = vec->arr;
   int counter = 0;
   while (!comp(*cursor, item)) {
@@ -84,9 +84,10 @@ int MAKE_FUNC_NAME(find_with)(MAKE_STRUCT_TYPE_NAME()* vec, VECTYPE item, int (*
   return counter;
 }
 
-size_t MAKE_FUNC_NAME(push)(MAKE_STRUCT_TYPE_NAME()* vec, VECTYPE item) {
+size_t MAKE_FUNC_NAME(push)(MAKE_STRUCT_TYPE_NAME() * vec, VECTYPE item) {
   if (vec->size < vec->capacity) {
-    MAKE_FUNC_NAME(resize_on_bounds)(vec, vec->capacity * VECNAME_DEF_LOWER_MARGIN, vec->capacity * VECNAME_DEF_UPPER_MARGIN);
+    MAKE_FUNC_NAME(resize_on_bounds)
+    (vec, vec->capacity * VECNAME_DEF_LOWER_MARGIN, vec->capacity * VECNAME_DEF_UPPER_MARGIN);
   } else {
     MAKE_FUNC_NAME(resize_up)(vec);
   }
@@ -96,7 +97,7 @@ size_t MAKE_FUNC_NAME(push)(MAKE_STRUCT_TYPE_NAME()* vec, VECTYPE item) {
   return offset;
 }
 
-size_t MAKE_FUNC_NAME(insert)(MAKE_STRUCT_TYPE_NAME()* vec, size_t index, VECTYPE item) {
+size_t MAKE_FUNC_NAME(insert)(MAKE_STRUCT_TYPE_NAME() * vec, size_t index, VECTYPE item) {
   // if index is greater than size, push to last place;
   if (index >= vec->size) {
     return MAKE_FUNC_NAME(push)(vec, item);
@@ -104,21 +105,25 @@ size_t MAKE_FUNC_NAME(insert)(MAKE_STRUCT_TYPE_NAME()* vec, size_t index, VECTYP
     vec->size++;
     memmove(vec->arr + index + 1, vec->arr + index, (vec->size - index + 1) * sizeof(int));
     *(vec->arr + index) = item;
-    MAKE_FUNC_NAME(resize_on_bounds)(vec, vec->capacity * VECNAME_DEF_LOWER_MARGIN, vec->capacity * VECNAME_DEF_UPPER_MARGIN);
+    MAKE_FUNC_NAME(resize_on_bounds)
+    (vec, vec->capacity * VECNAME_DEF_LOWER_MARGIN, vec->capacity * VECNAME_DEF_UPPER_MARGIN);
     return index;
   }
 }
 
-size_t MAKE_FUNC_NAME(preappend)(MAKE_STRUCT_TYPE_NAME()* vec, VECTYPE item) { return MAKE_FUNC_NAME(insert)(vec, 0, item); }
+size_t MAKE_FUNC_NAME(preappend)(MAKE_STRUCT_TYPE_NAME() * vec, VECTYPE item) {
+  return MAKE_FUNC_NAME(insert)(vec, 0, item);
+}
 
-VECTYPE MAKE_FUNC_NAME(pop)(MAKE_STRUCT_TYPE_NAME()* vec) {
+VECTYPE MAKE_FUNC_NAME(pop)(MAKE_STRUCT_TYPE_NAME() * vec) {
   vec->size--;
   VECTYPE item = *(vec->arr + vec->size);
-  MAKE_FUNC_NAME(resize_on_bounds)(vec, vec->capacity * VECNAME_DEF_LOWER_MARGIN, vec->capacity * VECNAME_DEF_UPPER_MARGIN);
+  MAKE_FUNC_NAME(resize_on_bounds)
+  (vec, vec->capacity * VECNAME_DEF_LOWER_MARGIN, vec->capacity * VECNAME_DEF_UPPER_MARGIN);
   return item;
 }
 
-VECTYPE MAKE_FUNC_NAME(deleete)(MAKE_STRUCT_TYPE_NAME()* vec, size_t index) {
+VECTYPE MAKE_FUNC_NAME(deleete)(MAKE_STRUCT_TYPE_NAME() * vec, size_t index) {
   // if index is greater than size, push to last place;
   if (index >= vec->size) {
     return MAKE_FUNC_NAME(pop)(vec);
@@ -126,7 +131,8 @@ VECTYPE MAKE_FUNC_NAME(deleete)(MAKE_STRUCT_TYPE_NAME()* vec, size_t index) {
     VECTYPE item = *(vec->arr + index);
     memmove(vec->arr + index, vec->arr + index + 1, (vec->size - index) * sizeof(int));
     vec->size--;
-    MAKE_FUNC_NAME(resize_on_bounds)(vec, vec->capacity * VECNAME_DEF_LOWER_MARGIN, vec->capacity * VECNAME_DEF_UPPER_MARGIN);
+    MAKE_FUNC_NAME(resize_on_bounds)
+    (vec, vec->capacity * VECNAME_DEF_LOWER_MARGIN, vec->capacity * VECNAME_DEF_UPPER_MARGIN);
     return item;
   }
 }
