@@ -39,8 +39,8 @@ int main(void) {
       }
     }
   }
-  // printf("%d\n", running_sum);
-  print_sch(syms, nums);
+  printf("%d\n", running_sum);
+  // print_sch(syms, nums);
 }
 
 int is_part_number(sym_vec_t* symtable[], unsigned int linenum, sch_num_t num) {
