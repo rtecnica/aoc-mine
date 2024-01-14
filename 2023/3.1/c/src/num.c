@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-num_vec_t* from_string(char* line, size_t len) {
+num_vec_t* numvec_from_string(char* line) {
   num_vec_t* new = num_new_heap();
   size_t counter = 0;
   int begin = -1;
@@ -13,7 +13,7 @@ num_vec_t* from_string(char* line, size_t len) {
   //    begin, end > 0 -> returning number
   //    begin < 0, end > 0 -> invalid
   //
-  while (counter <= len) {
+  while (1) {
     if (line[counter] <= '9' && line[counter] >= '0') {
       // Is Digit
       if (begin < 0)
@@ -22,7 +22,7 @@ num_vec_t* from_string(char* line, size_t len) {
         end = counter;
       }
     } else {
-      if (begin > 0) {
+      if (begin >= 0) {
         if (end < 0) {
           end = begin;
         }
@@ -39,14 +39,23 @@ num_vec_t* from_string(char* line, size_t len) {
         };
 
         num_push(new, new_num);
-
         begin = -1;
         end = -1;
       }
     }
+
+    if (line[counter] == '\0')
+      break;
 
     counter++;
   }
 
   return new;
 };
+
+void numvec_print(num_vec_t* vec) {
+  for (int i = 0; i < vec->size; i++) {
+    printf("%d:%lu-%lu ", vec->arr[i].value, vec->arr[i].begin, vec->arr[i].end);
+  }
+  printf("\n");
+}
