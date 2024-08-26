@@ -1,22 +1,26 @@
 use std::fs::read_to_string;
 
-mod game;
-use game::*;
+mod parse;
+use parse::*;
 
 fn main() {
-    let ref_bag = Bag {
-        red: 12,
-        blue: 14,
-        green: 13,
-    };
+    let content = read_to_string("../input.txt").unwrap();
+    let mut p = 0;
+    let mut lines = vec![];
+    for line in content.lines() {
+        lines.push((p, line));
+        p = p + 1;
+    }
+    let lines2 = lines.clone();
+    let sym_table = parse_symbol_table(lines);
+    let num_table = parse_part_table(lines2);
+    let part_num_table = num_table
+        .iter()
+        .map(|l| l.1.iter().filter(|m| num_is_part_num(l.0, m, &sym_table)));
 
-    let running_sum: u32 = read_to_string("../input.txt")
-        .unwrap()
-        .lines()
-        .map(|line| from_string(line))
-        .filter(|curr_game| is_game_possible(&ref_bag, &curr_game))
-        .map(|curr_game: Game| curr_game.id)
-        .fold(0, |acc, item| acc + (item as u32));
+    let sum = part_num_table
+        .map(|c| c.map(|m| m.0.parse::<u32>().ok().unwrap()).sum::<u32>())
+        .sum::<u32>();
 
-    println!("{}", running_sum);
+    println!("{}", sum);
 }
