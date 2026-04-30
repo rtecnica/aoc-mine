@@ -29,13 +29,6 @@ uint64_t get_max_joltage(char* bank, uint32_t num_batt) {
         break;
       }
     }
-    /*
-    printf("%ld: %c -> ", (cursor - bank), *cursor);
-    for (int i = (num_batt - 1); i >= 0; i--) {
-      printf("%d", joltage[i]);
-    }
-    printf("\n");
-    */
   }
   for (int i = 0; i < num_batt; i++) {
     uint64_t pow = 1;

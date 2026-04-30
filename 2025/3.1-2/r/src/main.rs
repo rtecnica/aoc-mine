@@ -1,22 +1,17 @@
 use std::fs::read_to_string;
 
-mod lib;
-use lib::*;
+mod jolt;
+use jolt::*;
 
 fn main() {
-    let mut running_sum: u64 = 0;
     let content = read_to_string("../input.txt").unwrap();
-    for interval in content.split(',') {
-        let mut int_split = interval.split('-');
-        let start: u64 = int_split.next().unwrap().trim().parse().unwrap();
-        let end: u64 = int_split.next().unwrap().trim().parse().unwrap();
-        for idx in start..=end {
-            if oom(idx) % 2 == 0 {
-                if idx % ((10 as u64).pow(oom(idx) / 2) + 1) == 0 {
-                    running_sum = running_sum + idx;
-                }
-            }
-        }
+    let lines = content.lines();
+    let mut max_joltage = 0;
+    for line in lines {
+        let line_joltage = get_max_joltage(line, 12);
+        max_joltage = max_joltage + line_joltage;
+        // print!("{} ", line);
+        print!("{}\n", line_joltage);
     }
-    println!("{}", running_sum);
+    println!("{}", max_joltage);
 }
